@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const mysql = require('mysql');
 const dotenv = require('dotenv');
-const { static } = require('express');
 dotenv.config({ path: './.env' });
 
 const app = express();
@@ -31,6 +30,11 @@ db.connect((error) => {
 app.get('/', (req, res) => {
 	// res.send('<h1>Hello From Node.js</h1>');
 	res.render('index');
+});
+
+app.get('/register', (req, res) => {
+	// res.send('<h1>Hello From Node.js</h1>');
+	res.render('register');
 });
 
 app.listen(port, () => {
