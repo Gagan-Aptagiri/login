@@ -7,6 +7,11 @@ dotenv.config({ path: './.env' });
 const app = express();
 const port = 5000;
 
+//Enable form data
+app.use(express.urlencoded({ extended: false }));
+//Enable JSON
+app.use(express.json());
+
 const db = mysql.createConnection({
 	host: process.env.DATABASE_HOST,
 	user: process.env.DATABASE_USER,
@@ -27,15 +32,9 @@ db.connect((error) => {
 	}
 });
 
-app.get('/', (req, res) => {
-	// res.send('<h1>Hello From Node.js</h1>');
-	res.render('index');
-});
-
-app.get('/register', (req, res) => {
-	// res.send('<h1>Hello From Node.js</h1>');
-	res.render('register');
-});
+//Define Routes
+app.use('/', require('./routes/pages'));
+app.use('/auth', require('./routes/auth'));
 
 app.listen(port, () => {
 	console.log('Server running on port: ' + port);
