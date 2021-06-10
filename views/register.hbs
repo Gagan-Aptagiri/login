@@ -73,6 +73,16 @@
               >
             </div>
 
+            <div class="form-group">
+              <label for="passwordConfirm">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="passwordConfirm"
+                name="passwordConfirm"
+              >
+            </div>
+
             <button
               type="submit"
               class="btn btn-primary mt-2"
@@ -80,6 +90,11 @@
           </form>
         </div>
       </div>
+
+      {{#if message}}
+        <h4 class="alert alert-danger mt-4">{{message}}</h4>
+      {{/if}}
+
     </div>
 
     <!-- JavaScript Bundle with Popper -->

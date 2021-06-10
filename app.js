@@ -1,8 +1,7 @@
 const express = require('express');
 const path = require('path');
-const mysql = require('mysql');
-const dotenv = require('dotenv');
-dotenv.config({ path: './.env' });
+
+const db = require('./util/db');
 
 const app = express();
 const port = 5000;
@@ -11,13 +10,6 @@ const port = 5000;
 app.use(express.urlencoded({ extended: false }));
 //Enable JSON
 app.use(express.json());
-
-const db = mysql.createConnection({
-	host: process.env.DATABASE_HOST,
-	user: process.env.DATABASE_USER,
-	password: process.env.DATABASE_PASSWORD,
-	database: process.env.DATABASE,
-});
 
 const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
