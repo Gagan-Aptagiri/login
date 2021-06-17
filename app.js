@@ -1,15 +1,17 @@
 const express = require('express');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 
 const db = require('./util/db');
 
 const app = express();
 const port = 5000;
 
-//Enable form data
+// Parse URL-encoded bodies ( as sent by HTML Forms) Enable form data
 app.use(express.urlencoded({ extended: false }));
-//Enable JSON
+// Parse JSON bodies (as sent by API Clients) Enable JSON
 app.use(express.json());
+app.use(cookieParser());
 
 const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
