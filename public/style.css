@@ -26,3 +26,13 @@ nav li a{
 nav li a:hover{
   color: greenyellow;
 }
+
+.avatar-ctn {
+  background-color: orange;
+  text-align: center;
+}
+
+.avatar {
+  width: 65%;
+  border-bottom: 1px solid rgba(0,0,0,0.125);
+}
